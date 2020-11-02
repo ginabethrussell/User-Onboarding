@@ -1,8 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+const initialFormState = {
+    name: '',
+    email: '',
+    password: '',
+    terms: true
+}
 
 export default function Form(){
+    const [formState, setFormState] = useState(initialFormState);
+
+    const onInputChange = (e) => {
+        const newFormState = {
+            ...formState, 
+            [e.target.name]: e.target.type === "checkbox"? e.target.checked : e.target.value,
+        }
+        setFormState(newFormState);
+    }
+
+    const submitForm = (e) => {
+        e.preventDefault();
+        console.log(formState);
+        setFormState(initialFormState);
+    }
+
     return(
-        <div className='form'>
+        <form onSubmit={submitForm} className='form'>
             {/* Name */}
             <label htmlFor='name'>Name</label>
             <input 
@@ -10,8 +33,9 @@ export default function Form(){
             type='text'
             id = 'name'
             placeholder = 'name'
-            // value = ''
+            value = {formState.name}
             required
+            onChange={onInputChange}
             />
             {/* Email */}
             <label htmlFor='email'>Email</label>
@@ -20,8 +44,9 @@ export default function Form(){
             type='email'
             id = 'email'
             placeholder = 'email'
-            // value = ''
+            value = {formState.email}
             required
+            onChange={onInputChange}
             />
             {/* Password */}
             <label htmlFor='password'>Password</label>
@@ -30,8 +55,9 @@ export default function Form(){
             type='password'
             id = 'password'
             placeholder = 'password'
-            // value = ''
+            value = {formState.password}
             required
+            onChange={onInputChange}
             />
             {/* Terms of Service Checkbox */}
             <label for="terms">Terms</label>
@@ -39,10 +65,11 @@ export default function Form(){
             name='terms'
             type='checkbox' 
             id='terms' 
-            checked
+            checked = {formState.terms}
+            onChange={onInputChange}
             />
             {/* Submit Button */}
             <button disabled={false} type='submit'>Submit</button>
-        </div>
+        </form>
     )
 }
