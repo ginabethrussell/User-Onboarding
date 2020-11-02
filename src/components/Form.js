@@ -4,6 +4,7 @@ const initialFormState = {
     name: '',
     email: '',
     password: '',
+    role: '',
     terms: true
 }
 
@@ -11,6 +12,7 @@ export default function Form(){
     const [formState, setFormState] = useState(initialFormState);
 
     const onInputChange = (e) => {
+        console.log(e.target.name, e.target.value);
         const newFormState = {
             ...formState, 
             [e.target.name]: e.target.type === "checkbox"? e.target.checked : e.target.value,
@@ -22,6 +24,7 @@ export default function Form(){
         e.preventDefault();
         console.log(formState);
         setFormState(initialFormState);
+
     }
 
     return(
@@ -59,6 +62,14 @@ export default function Form(){
             required
             onChange={onInputChange}
             />
+            {/* Role */}
+            <label htmlFor='role'>Role</label>
+            <select id='role' name='role' required  onChange={onInputChange}>
+                <option value=''>--select your role--</option>
+                <option value='admin'>Admin</option>
+                <option value='volunteer'>Volunteer</option>
+                <option value='student'>Student</option>
+            </select>
             {/* Terms of Service Checkbox */}
             <label for="terms">Terms</label>
             <input 
