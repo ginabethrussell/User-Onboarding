@@ -20,6 +20,7 @@ export default function Form(){
         role: '',
         terms: ''
         });
+    const [users, setUsers] = useState([]);
 
     const formSchema = yup.object().shape({
         name: yup.string().matches(/[a-zA-Z\s]/, 'Name must only contain letters and spaces.'),
@@ -28,6 +29,7 @@ export default function Form(){
         role: yup.string().min(1 | 'Please select a role.'),
         terms: yup.bool().oneOf([true])
     });
+
     const validateChange = (e) => {
         yup
         .reach(formSchema, e.target.name)
@@ -40,14 +42,6 @@ export default function Form(){
           setErrors({ ...errors, [e.target.name]: err.errors[0] });
         });
     };
-    console.log(errors);
-
-    useEffect(() => {
-        formSchema.isValid(formState).then(valid => {
-          console.log("valid?", valid);
-          setButtonDisabled(!valid);
-        });
-      }, [formState]);
 
     const onInputChange = (e) => {
         console.log(e.target.name, e.target.value);
@@ -62,14 +56,20 @@ export default function Form(){
         validateChange(e);
         setFormState(newFormState);   
     }
-    console.log(formState);
+    
+    useEffect(() => {
+        formSchema.isValid(formState).then(valid => {
+          console.log("valid?", valid);
+          setButtonDisabled(!valid);
+        });
+      }, [formState]);
 
     const submitForm = (e) => {
         e.preventDefault();
         console.log(formState);
         setFormState(initialFormState);
         axios.post( 'https://reqres.in/api/users', formState)
-        .then(response => console.log('Response:', response.data))
+        .then(response => setUsers([...users, response.data]))
         .catch(err => console.log(err))
     }
 
@@ -132,6 +132,7 @@ export default function Form(){
             {errors.terms.length > 0? (<p className="errors">{errors.terms}</p>): null}
             {/* Submit Button */}
             <button disabled={buttonDisabled} type='submit'>Submit</button>
+            <pre width='300px'>{JSON.stringify(users, null, 2)}</pre>
         </form>
     )
 }
