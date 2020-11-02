@@ -23,17 +23,17 @@ export default function Form(){
     const [users, setUsers] = useState([]);
 
     const formSchema = yup.object().shape({
-        name: yup.string().matches(/[a-zA-Z\s]/, 'Name must only contain letters and spaces.'),
+        name: yup.string().matches(/[a-zA-Z\s]/, 'Name is required and must only contain letters and spaces.'),
         email: yup.string().email('Please enter a valid email.'),
-        password: yup.string().min(6 | 'password must contain 8 characters'),
-        role: yup.string().min(1 | 'Please select a role.'),
-        terms: yup.bool().oneOf([true])
+        password: yup.string().min(6,'Password must contain 6 characters'),
+        role: yup.string().min(1,'Please select a role.'),
+        terms: yup.bool().oneOf([true],"You must agree to the terms and conditions.")
     });
 
     const validateChange = (e) => {
         yup
         .reach(formSchema, e.target.name)
-        .validate(e.target.value)
+        .validate(e.target.type === "checkbox"? e.target.checked : e.target.value)
         .then(valid => {
           setErrors({ ...errors, [e.target.name]: "" });
         })
