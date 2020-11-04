@@ -83,9 +83,12 @@ export default function Form(props){
         e.preventDefault();
         console.log(formState);
         axios.post( 'https://reqres.in/api/users', formState)
-        .then(response => setUsers([...users, response.data]))
+        .then(response => {
+            setUsers([...users, response.data]);
+            setFormState(initialFormState);
+        })
         .catch(err => console.log(err))
-        setFormState(initialFormState);
+        
     }
 
     return(
@@ -135,7 +138,7 @@ export default function Form(props){
             <div className='form-group'>
             {/* Role */}
             <label htmlFor='role'>Role</label>
-            <select id='role' name='role' required onChange={onInputChange}>
+            <select id='role' name='role' value={formState.role} required onChange={onInputChange}>
                 <option value=''>--select your role--</option>
                 <option value='UI'>UI Designer</option>
                 <option value='Front End I'>Front End Developer I</option>
@@ -149,7 +152,7 @@ export default function Form(props){
             <div className='form-group'>
             {/* Product Choice 1 */}
             <label htmlFor='product1'>Product 1st Choice</label>
-            <select id='product1' name='product1' onChange={onInputChange}>
+            <select id='product1' name='product1' value={formState.product1} onChange={onInputChange}>
                 <option value=''>--select your first choice--</option>
                 <option value='African Marketplace'>African Marketplace</option>
                 <option value='Anywhere Fitness'>Anywhere Fitness</option>
@@ -169,7 +172,7 @@ export default function Form(props){
             <div className='form-group'>
             {/* Product Choice 2 */}
             <label htmlFor='product12'>Product 2nd Choice</label>
-            <select id='product2' name='product2' onChange={onInputChange}>
+            <select id='product2' name='product2' value={formState.product2} onChange={onInputChange}>
             <option value=''>--select your second choice--</option>
                 <option value='African Marketplace'>African Marketplace</option>
                 <option value='Anywhere Fitness'>Anywhere Fitness</option>
@@ -189,7 +192,7 @@ export default function Form(props){
             <div className='form-group'>
             {/* Product Choice 3 */}
             <label htmlFor='product3'>Product 3rd Choice</label>
-            <select id='product3' name='product3' onChange={onInputChange}>
+            <select id='product3' name='product3' value={formState.product3} onChange={onInputChange}>
             <option value=''>--select your third choice--</option>
                 <option value='African Marketplace'>African Marketplace</option>
                 <option value='Anywhere Fitness'>Anywhere Fitness</option>
