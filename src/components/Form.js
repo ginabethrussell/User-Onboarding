@@ -100,6 +100,7 @@ export default function Form(props){
             name = 'name'
             type='text'
             id = 'name'
+            data-cy='name'
             placeholder = 'name'
             value = {formState.name}
             required
@@ -114,6 +115,7 @@ export default function Form(props){
             name = 'email'
             type='email'
             id = 'email'
+            data-cy='email'
             placeholder = 'email'
             value = {formState.email}
             required
@@ -128,6 +130,7 @@ export default function Form(props){
             name = 'password'
             type='password'
             id = 'password'
+            data-cy='password'
             placeholder = 'password'
             value = {formState.password}
             required
@@ -216,13 +219,14 @@ export default function Form(props){
             name='terms'
             type='checkbox' 
             id='terms' 
+            data-cy='terms'
             checked = {formState.terms}
             onChange={onInputChange}
             />
             {errors.terms.length > 0? (<p className="errors">{errors.terms}</p>): null}
             </div>
             {/* Submit Button */}
-            <button disabled={buttonDisabled} type='submit'>Submit</button>
+            <button data-cy='submit' disabled={buttonDisabled} type='submit'>Submit</button>
             {/* <pre width='300px'>{JSON.stringify(users, null, 2)}</pre> */}
         </form>
     )
