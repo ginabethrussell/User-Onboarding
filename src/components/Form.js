@@ -30,9 +30,9 @@ export default function Form(props){
     const {updateTeam} = props;
 
     const formSchema = yup.object().shape({
-        name: yup.string().matches(/[a-zA-Z\s]/, 'Name is required and must only contain letters and spaces.'),
-        email: yup.string().email('Please enter a valid email.').notOneOf(['waffles@syrup.com'], 'That email is already taken.'),
-        password: yup.string().min(6,'Password must contain 6 characters'),
+        name: yup.string().matches(/[a-zA-Z\s]/, 'Name is required and must only contain letters and spaces.').required(),
+        email: yup.string().email('Please enter a valid email.').notOneOf(['waffles@syrup.com'], 'That email is already taken.').required('Email is required.'),
+        password: yup.string().min(6,'Password must contain 6 characters').required(),
         role: yup.string().min(1,'Please select a role.'),
         product1: yup.string(),
         product2: yup.string(),
@@ -141,7 +141,7 @@ export default function Form(props){
             <div className='form-group'>
             {/* Role */}
             <label htmlFor='role'>Role</label>
-            <select id='role' name='role' value={formState.role} required onChange={onInputChange}>
+            <select id='role' name='role' data-cy='role' value={formState.role} required onChange={onInputChange}>
                 <option value=''>--select your role--</option>
                 <option value='UI'>UI Designer</option>
                 <option value='Front End I'>Front End Developer I</option>
