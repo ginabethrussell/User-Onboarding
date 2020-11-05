@@ -120,6 +120,7 @@ button:disabled {
   flex-wrap: wrap;
   width: 100%;
   justify-content: center;
+  align-items:center;
 }
 .team-member {
   border: 1px solid rgb(210, 210, 210);
@@ -130,6 +131,7 @@ button:disabled {
   background-color: white;
   text-align: center;
   width: 40%;
+  height: 325px;
   margin: 20px;
   text-align: left;
   font-size: 1.6rem;
@@ -150,6 +152,7 @@ button:disabled {
   }
   .team-member {
     width: 50%;
+    height: 350px;
   }
   
 }
