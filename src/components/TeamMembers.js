@@ -5,7 +5,7 @@ export default function TeamMembers(props){
     return (
         <>
         {(team.length > 0) && (
-        <div className="team-members">
+        <div data-cy='teamMembers' className="team-members">
            <h2> Registered Team Members</h2>
            <div className='team-div'>
             {

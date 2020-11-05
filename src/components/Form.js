@@ -30,9 +30,9 @@ export default function Form(props){
     const {updateTeam} = props;
 
     const formSchema = yup.object().shape({
-        name: yup.string().matches(/[a-zA-Z\s]/, 'Name is required and must only contain letters and spaces.').required(),
-        email: yup.string().email('Please enter a valid email.').notOneOf(['waffles@syrup.com'], 'That email is already taken.').required('Email is required.'),
-        password: yup.string().min(6,'Password must contain 6 characters').required(),
+        name: yup.string().required('Name is required.').matches(/^[a-zA-Z ]+$/, 'Name must only contain letters and spaces.'),
+        email: yup.string().required('Email is required.').email('Please enter a valid email.').notOneOf(['waffles@syrup.com'], 'That email is already taken.'),
+        password: yup.string().required('Password is required.').min(6,'Password must contain 6 characters.'),
         role: yup.string().min(1,'Please select a role.'),
         product1: yup.string(),
         product2: yup.string(),
@@ -92,7 +92,7 @@ export default function Form(props){
     }
 
     return(
-        <form onSubmit={submitForm} className='form'>
+        <form data-cy='form' onSubmit={submitForm} className='form'>
             <div className="form-group">
             {/* Name */}
             <label htmlFor='name'>Name</label>
@@ -106,7 +106,7 @@ export default function Form(props){
             required
             onChange={onInputChange}
             />
-            {errors.name.length > 0? (<p className="errors">{errors.name}</p>): null}
+            {errors.name.length > 0? (<p data-cy='nameError' className="errors">{errors.name}</p>): null}
             </div>
             <div className="form-group">
             {/* Email */}
@@ -121,7 +121,7 @@ export default function Form(props){
             required
             onChange={onInputChange}
             />
-             {errors.email.length > 0? (<p className="errors">{errors.email}</p>): null}
+             {errors.email.length > 0? (<p data-cy='emailError' className="errors">{errors.email}</p>): null}
              </div>
              <div className="form-group">
             {/* Password */}
@@ -136,7 +136,7 @@ export default function Form(props){
             required
             onChange={onInputChange}
             />
-            {errors.password.length > 0? (<p className="errors">{errors.password}</p>): null}
+            {errors.password.length > 0? (<p data-cy='passwordError' className="errors">{errors.password}</p>): null}
             </div>
             <div className='form-group'>
             {/* Role */}
@@ -149,7 +149,7 @@ export default function Form(props){
                 <option value='Back End'>Back End Developer</option>
                 <option value='PL'>Project Lead</option>
             </select>
-            {errors.role.length > 0? (<p className="errors">{errors.role}</p>): null}
+            {errors.role.length > 0? (<p data-cy='roleError' className="errors">{errors.role}</p>): null}
             </div>
             <h3>Marketing Products Preference</h3>
             <div className='form-group'>
