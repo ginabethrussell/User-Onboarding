@@ -131,7 +131,6 @@ button:disabled {
   background-color: white;
   text-align: center;
   width: 40%;
-  height: 325px;
   margin: 20px;
   text-align: left;
   font-size: 1.6rem;
@@ -139,7 +138,7 @@ button:disabled {
   flex-direction: column;
   align-items: center;
 }
-.team-member p {
+.team-member p, .team-member ol {
   width: 90%;
 }
 @media(max-width: 850px){
@@ -152,7 +151,7 @@ button:disabled {
   }
   .team-member {
     width: 60%;
-    height: 350px;
+
   }
   
 }
