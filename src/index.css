@@ -1,13 +1,166 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+  box-sizing: border-box;
 }
+html {
+  font-size: 62.5%;
+}
+body {
+  background-color: rgb(244, 244, 244);
+  color: rgb(65, 75, 60);
+  font-family: 'Bitter', serif;
+}
+.container {
+  width: 75%;
+  border: 1px solid rgb(210, 210, 210);
+  border-radius: 6px;
+  box-shadow: 0px 1px 6px -2px rgb(128, 127, 127);
+  margin: 32px auto;
+  padding: 16px;
+  padding-bottom: 32px;
+  background-color: white;
+  text-align: center;
+}
+.schoolLogo {
+  height: 75px;
+  margin-top: 50px;
+}
+h1 {
+  color: darkblue;
+  font-size: 3rem;
+}
+h2{
+  color: crimson;
+  font-size: 2.4rem;
+}
+.container .form {
+  width: 100%;
+  max-width: 500px;
+  min-width: 300px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: baseline;
+}
+.form h3 {
+  font-size: 2rem;
+  width: 100%;
+  margin: 16px auto;
+}
+.form-group {
+  width: 100%;
+  padding: 0 24px 0 24px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+ }
+label{
+  display: flex;
+  margin-bottom: 16px;
+  justify-content: space-between;
+  font-size: 2rem;
+}
+input[type=text], input[type=email], input[type=password], select {
+  height: 3rem;
+  font-size: 2rem;
+  padding-left: 20px
+}
+input[type=checkbox]
+{
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(2); /* IE */
+  -moz-transform: scale(2); /* FF */
+  -webkit-transform: scale(2); /* Safari and Chrome */
+  -o-transform: scale(2); /* Opera */
+  transform: scale(2);
+  padding: 10px;
+  margin:  0 25px;
+}
+.checkbox-group {
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: baseline;
+}
+button {
+  margin: 0 auto;
+  height: 30px;
+  width: 100px;
+  border-radius: 6px;
+  color:dodgerblue;
+  background-color: white;
+  border: 2px solid dodgerblue;
+}
+button:hover {
+  cursor: pointer;
+}
+button:disabled {
+  color: crimson;
+  background-color: white;
+  border: 2px solid crimson;
+  cursor: not-allowed;
+}
+.errors {
+  margin: 8px;
+  font-size: 1.6rem;
+  color: red;
+}
+.errors div {
+    display: block;
+    margin-top: 4px;
+}
+.team-members {
+  color: black;
+}
+.team-members h2 {
+  color: darkblue;
+}
+.team-div {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+  align-items:center;
+}
+.team-member {
+  border: 1px solid rgb(210, 210, 210);
+  border-radius: 6px;
+  box-shadow: 0px 1px 6px -2px rgb(128, 127, 127);
+  margin: 16px 8px;
+  padding: 16px;
+  background-color: white;
+  text-align: center;
+  width: 40%;
+  margin: 20px;
+  text-align: left;
+  font-size: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.team-member p, .team-member ol {
+  width: 90%;
+}
+@media(max-width: 850px){
+  .container {
+    width: 100%;
+  }
+  .team-div {
+    flex-direction: column;
+    align-items: center;
+  }
+  .team-member {
+    width: 60%;
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  }
+  
+}
+@media(max-width: 550px){
+  .container {
+    width: 100%;
+    min-width: 350px;
+  }
+  .team-member {
+    width: 85%;
+  }
 }
