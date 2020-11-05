@@ -3,6 +3,7 @@ describe('Form Tests', function(){
         cy.visit('http://localhost:3000')
     })
 
+    // Initial Load
     it('should have correct components displayed and submit button disabled on initial load ', function(){
         cy.get('[data-cy=form]').should('exist');
         cy.get('[data-cy=teamMembers]').should('not.exist');
@@ -91,7 +92,6 @@ describe('Form Tests', function(){
         .select('Front End I').select('')
         cy.get('[data-cy=roleError]')
         .contains('Please select a role.')
-
 
     })
 })

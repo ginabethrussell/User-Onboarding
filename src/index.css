@@ -10,43 +10,20 @@ body {
   font-family: 'Bitter', serif;
 }
 .container {
+  width: 75%;
   border: 1px solid rgb(210, 210, 210);
   border-radius: 6px;
   box-shadow: 0px 1px 6px -2px rgb(128, 127, 127);
-  margin: 32px 16px;
+  margin: 32px auto;
   padding: 16px;
+  padding-bottom: 32px;
   background-color: white;
   text-align: center;
 }
-.container form {
-  width: 500px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: baseline;
-}
-
-.form-group {
-  width: 100%;
-  padding: 0 24px 0 24px;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 24px;
- }
-
-header {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-between;
-  align-items: center;
-} 
-
 .schoolLogo {
   height: 75px;
   margin-top: 50px;
 }
-
 h1 {
   color: darkblue;
   font-size: 3rem;
@@ -55,14 +32,28 @@ h2{
   color: crimson;
   font-size: 2.4rem;
 }
-form h3 {
+.container .form {
+  width: 100%;
+  max-width: 500px;
+  min-width: 300px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: baseline;
+}
+.form h3 {
   font-size: 2rem;
-  width: 500px;
+  width: 100%;
   margin: 16px auto;
 }
-form h2, form h4{
-  color: darkblue;
-}
+.form-group {
+  width: 100%;
+  padding: 0 24px 0 24px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+ }
 label{
   display: flex;
   margin-bottom: 16px;
@@ -85,45 +76,38 @@ input[type=checkbox]
   padding: 10px;
   margin:  0 25px;
 }
-
 .checkbox-group {
   flex-direction: row;
   justify-content: flex-start;
   align-items: baseline;
 }
-
 button {
   margin: 0 auto;
   height: 30px;
   width: 100px;
-  border-radius: 8px;
-  color: rgb(30, 220, 20);
+  border-radius: 6px;
+  color:dodgerblue;
   background-color: white;
-  border: 2px solid rgb(30, 220, 20);
+  border: 2px solid dodgerblue;
 }
-
 button:hover {
   cursor: pointer;
 }
-
 button:disabled {
   color: crimson;
   background-color: white;
   border: 2px solid crimson;
   cursor: not-allowed;
 }
-
 .errors {
   margin: 8px;
   font-size: 1.6rem;
   color: red;
 }
-
 .errors div {
     display: block;
     margin-top: 4px;
 }
-
 .team-members {
   color: black;
 }
@@ -131,8 +115,11 @@ button:disabled {
   color: darkblue;
 }
 .team-div {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
 }
 .team-member {
   border: 1px solid rgb(210, 210, 210);
@@ -142,8 +129,36 @@ button:disabled {
   padding: 16px;
   background-color: white;
   text-align: center;
-  width: 30%;
+  width: 40%;
   margin: 20px;
   text-align: left;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.team-member p {
+  width: 90%;
+}
+@media(max-width: 850px){
+  .container {
+    width: 100%;
+  }
+  .team-div {
+    flex-direction: column;
+    align-items: center;
+  }
+  .team-member {
+    width: 50%;
+  }
+  
+}
+@media(max-width: 550px){
+  .container {
+    width: 100%;
+    min-width: 350px;
+  }
+  .team-member {
+    width: 85%;
+  }
 }
